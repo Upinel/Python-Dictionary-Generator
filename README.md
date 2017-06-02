@@ -3,6 +3,7 @@ A dictionary Generator file with Python
 
 Usage:
 This script is written in Python3. And it is really easy to use on basically every system.
+You can generate dict in any syntax, any length, with Number/Capital Letter/Small Letter combination.
 Simply run:
 
 ~~~~
