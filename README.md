@@ -10,3 +10,10 @@ git clone https://github.com/Upinel/Python-Dictionary-Generator
 cd Python-Dictionary-Generator
 python make.py
 ~~~~
+
+some system may need to run specify in python3
+~~~~
+git clone https://github.com/Upinel/Python-Dictionary-Generator
+cd Python-Dictionary-Generator
+python3 make.py
+~~~~
