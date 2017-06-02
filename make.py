@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 filenameinput = ""
 filenameinput = input('''
 Please enter the file name: ''')
