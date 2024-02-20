@@ -50,6 +50,20 @@ This will generate all possible alphanumeric combinations of lengths ranging fro
 
 If you’d like to contribute to the project, please fork the repository and make changes as you’d like. Pull requests are warmly welcome.
 
+## NodeJS Version
+This project have an evil twins written in NodeJS: [upinel/NodeJS-Dictionary-Generator](https://github.com/upinel/NodeJS-Dictionary-Generator)
+
+## License
+This project is licensed under Apache License, Version 2.0.
+
+## Author
+Nova Upinel Chow  
+Email: dev@upinel.com
+
 ## Disclaimer
 
 This tool is for educational purposes only. The authors and contributors are not responsible for any illegal use of this tool.
+
+## Buy me a coffee
+
+If you wish to donate us, please donate to [https://paypal.me/Upinel](https://paypal.me/Upinel), it will be really lovely.
