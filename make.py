@@ -1,64 +1,52 @@
-filenameinput = ""
-filenameinput = input('''
-Please enter the file name: ''')
+import os
 
+def get_character_classes(choice):
+    character_classes = {
+        '1': '0123456789',
+        '2': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        '3': 'abcdefghijklmnopqrstuvwxyz',
+        '4': '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        '5': '0123456789abcdefghijklmnopqrstuvwxyz',
+        '6': '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+        '7': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+    }
+    return character_classes.get(choice, None)
 
-f=open(filenameinput, 'w')
+def generate_combinations(char_classes, current_combination, size, file):
+    if size == 0:
+        file.write(current_combination + '\n')
+        return
+    for char in char_classes:
+        generate_combinations(char_classes, current_combination + char, size - 1, file)
 
-def xselections(items, n):
-    if n==0: yield []
-    else:
-        for i in range(len(items)):
-            for ss in xselections(items, n-1):
-                yield [items[i]]+ss
+def generate_dictionary(filename, char_classes, min_size, max_size):
+    with open(filename, 'w') as file:
+        for size in range(min_size, max_size + 1):
+            generate_combinations(char_classes, '', size, file)
 
-# Numbers = 48 - 57
-# Capital = 65 - 90
-# Lower = 97 - 122
-numb = range(48,58)
-cap = range(65,91)
-low = range(97,123)
-choice = 0
-while int(choice) not in range(1,8):
-    choice = input('''
-    1) Numbers
-    2) Capital Letters
-    3) Lowercase Letters
-    4) Numbers + Capital Letters
-    5) Numbers + Lowercase Letters
-    6) Numbers + Capital Letters + Lowercase Letters
-    7) Capital Letters + Lowercase Letters
-    : ''') 
+def main():
+    filename = input('Please enter the file name: ')
+    
+    char_classes = None
+    while not char_classes:
+        choice = input(
+            '1) Numbers\n'
+            '2) Capital Letters\n'
+            '3) Lowercase Letters\n'
+            '4) Numbers + Capital Letters\n'
+            '5) Numbers + Lowercase Letters\n'
+            '6) Numbers + Capital Letters + Lowercase Letters\n'
+            '7) Capital Letters + Lowercase Letters\n'
+            'Please select the character class by number: '
+        )
+        char_classes = get_character_classes(choice)
+        if not char_classes:
+            print("Invalid choice, please try again.")
+    
+    min_size = int(input("What is the min size of the word? "))
+    max_size = int(input("What is the max size of the word? "))
+    
+    generate_dictionary(filename, char_classes, min_size, max_size)
 
-choice = int(choice)
-poss = []
-if choice == 1:
-    poss += numb
-elif choice == 2:
-    poss += cap
-elif choice == 3:
-    poss += low
-elif choice == 4:
-    poss += numb
-    poss += cap
-elif choice == 5:
-    poss += numb
-    poss += low
-elif choice == 6:
-    poss += numb
-    poss += cap
-    poss += low
-elif choice == 7:
-    poss += cap
-    poss += low
-
-bigList = []
-for i in poss:
-    bigList.append(str(chr(i)))
-
-MIN = input("What is the min size of the word? ")
-MIN = int(MIN)
-MAX = input("What is the max size of the word? ")
-MAX = int(MAX)
-for i in range(MIN,MAX+1):
-    for s in xselections(bigList,i): f.write(''.join(s) + '\n')
+if __name__ == '__main__':
+    main()
