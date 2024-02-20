@@ -26,7 +26,7 @@ git clone https://github.com/upinel/Python-Dictionary-Generator.git
 To use the Python Dictionary Generator, navigate to the directory where you cloned or downloaded the script and run the main script:
 ```bash
 cd Python-Dictionary-Generator
-python make.py
+python generator.py
 ```
 Follow the on-screen prompts to configure the generator settings, such as filename, character class choices, min size, and max size of the words.
 ```bash
